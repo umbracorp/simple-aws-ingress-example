@@ -3,9 +3,12 @@ kind: Ingress
 metadata:
   name: hello-world-ingress
   annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: hello-world
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
+  ingressClassName: alb
   rules:
   - http:
       paths:
